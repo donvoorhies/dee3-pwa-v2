@@ -61,8 +61,8 @@ li a:hover{background:#FFF;color:#25292C;transition:.5s}
 // Register the service worker
 "serviceWorker"in navigator&&navigator.serviceWorker.register("worker.js").then(function(a){/** Registration was successful*/console.log("ServiceWorker registration successful with scope: ",a.scope)})["catch"](function(a){/** Registration failed :-(*/console.log("ServiceWorker registration failed: ",a)});
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js" integrity="sha256-PyeEn7y37Cfw5xCU4Ub3G+A8Qx9zqMnAIaRGKjnfWiI=" crossorigin="anonymous"></script>
 <script> 
 $(document).ready(function(){$("#burger").click(function(){$("nav").slideToggle("slow");});$("a.funk").click(function(){$("nav").slideUp("slow");});});
 </script>
