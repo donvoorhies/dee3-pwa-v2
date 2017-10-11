@@ -6,6 +6,7 @@
 <meta name="theme-color" content="#25292C">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com/">
 <title>dee3 | mixes</title>
 <style>
 li,main{display:block}dl,h1,h2,h3,h4,h5,h6,ol,p,ul{margin-top:0;margin-bottom:0}img,main{max-width:100%}button,iframe,img{border:0}blockquote,button{margin:0;padding:0}body,html{height:100%}html{background:url(dee3.jpg) center center no-repeat fixed;background-size:cover;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-tap-highlight-color:transparent}body{margin:0;font:16px Arial,sans-serif,serif;display:flex;flex-direction:column}main{width:100%;flex:1 0 auto}ol,ul{padding-left:0}dd{margin-left:0}h1,h2,h3,h4,h5,h6{font-size:inherit}sup{position:relative;top:-.5em;vertical-align:baseline;font-size:75%;line-height:0}strong{font-weight:700}figure{margin:0}img{height:auto;vertical-align:middle}a{text-decoration:none;color:inherit}button{text-align:inherit;text-transform:inherit;font:inherit;-webkit-font-smoothing:inherit;letter-spacing:inherit;background:0 0;cursor:pointer;overflow:visible}::-moz-focus-inner{border:0;padding:0}.cf:before,.cf:after{content:" ";display:table}.cf:after{clear:both}
@@ -32,7 +33,7 @@ section p a{text-decoration: underline;font-weight:700}
 
 <body>
 <main>
-<header><h1>dee3 | mixes</h1><div id="burger"><a href="#">&equiv;</a></div><br class="cf"></header>
+<header><h1><a href="index.html" title="Back to the start">dee3 | mixes</a></h1><div id="burger"><a href="#">&equiv;</a></div><br class="cf"></header>
 <nav><ul><li><a class="funk" title="Play dee3's sets..." href="index.html#group-1">
 Play dee3&acute;s sets...
 </a></li><li><a class="funk" href="about.html" title="About dee3">About dee3...</a></li><li><a class="funk" href="mailto:dee3.mixes@gmail.com" title="Contact dee3">Contact dee3...</a></li><li><a class="funk" href="tos.html" title="About this PWA (Technical & Legal-stuff)">About this PWA (Technical- &amp; Legal Stuff...)</a></li></ul></nav>
@@ -55,12 +56,7 @@ You're more than welcome to send me a mail...!</p>
 </section>
 </main>
 <footer><a href="mailto:dee3.mixes@gmail.com">dee3.mixes@gmail.com</a></footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script> 
-$(document).ready(function(){$("#burger").click(function(){$("nav").slideToggle("slow");});$("a.funk").click(function(){$("nav").slideUp("slow");});});
-</script>
-<script>
-$(document).ready(function(){$("[data-fancybox]").fancybox({buttons:['fullScreen','close'],iframe:{css:{width:'800px',height:'120px'}}});});	
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous"></script>
+<script>$(document).ready(function(){$("#burger").click(function(){$("nav").slideToggle("slow");});$("a.funk").click(function(){$("nav").slideUp("slow");});});</script>
 </body>
 </html>
