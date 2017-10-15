@@ -70,23 +70,6 @@ li a:hover{background:#FFF;color:#25292C;transition:.5s}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js" integrity="sha384-B+3HWItqnREA3W0RRpRSnHEroKMBgs6PJyIJ7BPgWGBMDEYdZlZR+KIp/LAIMawR" crossorigin="anonymous"></script>
 <script>$(document).ready(function(){$("#burger").click(function(){$("nav").slideToggle("slow");});$("a.funk").click(function(){$("nav").slideUp("slow");});});</script>
 <script>$(document).ready(function(){$("[data-fancybox]").fancybox({buttons:['fullScreen','close'],iframe:{css:{width:'800px',height:'120px'}}});});</script>
-    <script>
-      var noSleep = new NoSleep();
-      var wakeLockEnabled = false;
-      var toggleEl = document.querySelector("#burger");
-      toggleEl.addEventListener('click', function() {
-        if (!wakeLockEnabled) {
-          noSleep.enable(); // keep the screen on!
-          wakeLockEnabled = true;
-          //toggleEl.value = "Wake Lock is enabled";
-          //document.body.style.backgroundColor = "green";
-        } else {
-          noSleep.disable(); // let the screen turn off.
-          wakeLockEnabled = false;
-          //toggleEl.value = "Wake Lock is disabled";
-          //document.body.style.backgroundColor = "";
-        }
-      }, false);
-    </script>
+<script>/*https://github.com/richtr/NoSleep.js */var noSleep=new NoSleep,wakeLockEnabled=!1,toggleEl=document.querySelector("#burger");toggleEl.addEventListener("click",function(){wakeLockEnabled?(noSleep.disable(),wakeLockEnabled=!1):(noSleep.enable(),wakeLockEnabled=!0)},!1);</script>
 </body>
 </html>
