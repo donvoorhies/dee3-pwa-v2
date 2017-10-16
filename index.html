@@ -58,7 +58,8 @@ li a:hover{background:#FFF;color:#25292C;transition:.5s}
 //http://deanhume.com/Home/BlogPost/create-a-really--really-simple-offline-page-using-service-workers/10135
 //https://github.com/deanhume/Service-Worker-Offline
 // Register the service worker
-"serviceWorker"in navigator&&navigator.serviceWorker.register("worker.js").then(function(a){/** Registration was successful*/console.log("ServiceWorker registration successful with scope: ",a.scope)})["catch"](function(a){/** Registration failed :-(*/console.log("ServiceWorker registration failed: ",a)});
+//"serviceWorker"in navigator&&navigator.serviceWorker.register("worker.js").then(function(a){/** Registration was successful*/console.log("ServiceWorker registration successful with scope: ",a.scope)})["catch"](function(a){/** Registration failed :-(*/console.log("ServiceWorker registration failed: ",a)});
+navigator.serviceWorker.controller?console.log("[PWA Builder] active service worker found, no need to register"):navigator.serviceWorker.register("worker.js",{scope:"./"}).then(function(e){console.log("Service worker has been registered for scope:"+e.scope)});
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js" integrity="sha384-B+3HWItqnREA3W0RRpRSnHEroKMBgs6PJyIJ7BPgWGBMDEYdZlZR+KIp/LAIMawR" crossorigin="anonymous"></script>
