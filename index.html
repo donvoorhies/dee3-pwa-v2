@@ -37,6 +37,12 @@ li:first-child{border-top:1px #FFF solid}
 li:hover{padding-left:0;width:100%}
 li a:hover{background:#FFF;color:#25292C;transition:.5s}
 </style>
+  <script>
+//http://deanhume.com/Home/BlogPost/create-a-really--really-simple-offline-page-using-service-workers/10135
+//https://github.com/deanhume/Service-Worker-Offline
+// Register the service worker
+"serviceWorker"in navigator&&navigator.serviceWorker.register("worker.js").then(function(a){/** Registration was successful*/console.log("ServiceWorker registration successful with scope: ",a.scope)})["catch"](function(a){/** Registration failed :-(*/console.log("ServiceWorker registration failed: ",a)});
+</script>
 </head>
 <body>
 <main>
@@ -54,12 +60,7 @@ li a:hover{background:#FFF;color:#25292C;transition:.5s}
 </script>
 <script>loadCSS( "https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css" );
 </script>
-<script>
-//http://deanhume.com/Home/BlogPost/create-a-really--really-simple-offline-page-using-service-workers/10135
-//https://github.com/deanhume/Service-Worker-Offline
-// Register the service worker
-"serviceWorker"in navigator&&navigator.serviceWorker.register("worker.js").then(function(a){/** Registration was successful*/console.log("ServiceWorker registration successful with scope: ",a.scope)})["catch"](function(a){/** Registration failed :-(*/console.log("ServiceWorker registration failed: ",a)});
-</script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js" integrity="sha384-B+3HWItqnREA3W0RRpRSnHEroKMBgs6PJyIJ7BPgWGBMDEYdZlZR+KIp/LAIMawR" crossorigin="anonymous"></script>
 <script>$(document).ready(function(){$("#burger").click(function(){$("nav").slideToggle("slow");});$("a.funk").click(function(){$("nav").slideUp("slow");});});</script>
