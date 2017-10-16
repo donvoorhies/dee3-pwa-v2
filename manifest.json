@@ -1,4 +1,4 @@
-{"name":"dee3 | mixes","short_name":"dee3","lang":"en-US","start_url":"https://donvoorhies.github.io/dee3-pwa-v2/","background_color":"#25292C","display":"standalone","orientation":"any","theme_color":"#25292C","icons":[
+{"name":"dee3 | mixes","short_name":"dee3","lang":"en-US","start_url":"https://donvoorhies.github.io/dee3-pwa-v2/index.html","background_color":"#25292C","display":"standalone","orientation":"any","theme_color":"#25292C","icons":[
 {"src":"android-launchericon-48-48.webp","sizes":"48x48","type":"image/webp"},
 {"src":"android-launchericon-72-72.webp","sizes":"72x72","type":"image/webp"},
 {"src":"android-launchericon-96-96.webp","sizes":"96x96","type":"image/webp"},
