@@ -20,7 +20,6 @@ limitations under the License.
   var filesToCache = [
   '.',
  		"index.html",
-        "worker.js",
         "DJ_DON.jpg",
         "about.html",
         "tos.html",
