@@ -81,7 +81,7 @@ this.addEventListener("install", function(e) {
         "android-launchericon-144-144.webp",
         "android-launchericon-192-192.webp",
         "android-launchericon-192-192.png",
-        "android-launchericon-512-512.png",
+        "android-launchericon-512-512.webp",
         "ios-appicon-76-76.png",
         "ios-appicon-120-120.png",
         "ios-appicon-152-152.png",
