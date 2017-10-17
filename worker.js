@@ -1,74 +1,25 @@
-/*http://deanhume.com/Home/BlogPost/create-a-really--really-simple-offline-page-using-service-workers/10135
-https://github.com/deanhume/Service-Worker-Offline*/
-/*'use strict';
-var cacheVersion=1,currentCache={offline:"offline-cache"+cacheVersion},offlineUrl="offline.html";this.addEventListener("install",function(a){a.waitUntil(caches.open(currentCache.offline).then(function(a){return a.addAll([offlineUrl])}))});this.addEventListener("fetch",function(a){"navigate"===a.request.mode||"GET"===a.request.method&&a.request.headers.get("accept").includes("text/html")?a.respondWith(fetch(a.request.url)["catch"](function(a){return caches.match(offlineUrl)})):a.respondWith(caches.match(a.request).then(function(b){return b||fetch(a.request)}))});*/
 /*
- * @license
- * Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
- * This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
- * The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
- * The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
- * Code distributed by Google as part of the polymer project is also
- * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
- */
+Copyright 2016 Google Inc.
 
-"use strict";
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
-var log = console.log.bind(console);
-var err = console.error.bind(console);
-this.onerror = err;
+    http://www.apache.org/licenses/LICENSE-2.0
 
-// Moves the contents of one named cached into another.
-var cacheCopy = function(source, destination) {
-  return caches.delete(destination).then(function() {
-    return Promise.all([
-      caches.open(source),
-      caches.open(destination)
-    ]).then(function(results) {
-      var sourceCache = results[0];
-      var destCache = results[1];
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 
-      return sourceCache.keys().then(function(requests) {
-        return Promise.all(requests.map(function(request) {
-          return sourceCache.match(request).then(function(response) {
-            return destCache.put(request, response);
-          });
-        }));
-      });
-    });
-  });
-}
+(function() {
+  'use strict';
 
-var fetchAndCache = function(request, cache) {
-  if (!(request instanceof Request)) {
-    request = new Request(request);
-  }
-
-  return fetch(request.clone()).then(function(response) {
-    cache.put(request, response.clone());
-    return response;
-  });
-};
-
-var baseUrl = (new URL("./", this.location.href) + "");
-// TODO: This is necessary to handle different implementations in the wild
-// The spec defines self.registration, but it was not implemented in Chrome 40.
-var scope;
-if (self.registration) {
-  scope = self.registration.scope;
-} else {
-  scope = self.scope || baseUrl;
-}
-
-this.addEventListener("install", function(e) {
-  // Put updated resources in a new cache, so that currently running pages
-  // get the current versions.
-  e.waitUntil(caches.delete("core-waiting").then(function() {
-    return caches.open("core-waiting").then(function(core) {
-      var resourceUrls = [
-        "",
-        "?offline",
-        "index.html",
+  var filesToCache = [
+  '.',
+ 		"index.html",
         "worker.js",
         "DJ_DON.jpg",
         "about.html",
@@ -87,41 +38,69 @@ this.addEventListener("install", function(e) {
         "ios-appicon-152-152.png",
         "ios-appicon-180-180.png",
         "ios-appicon-1024-1024.png"
-      ];
 
-      return Promise.all(resourceUrls.map(function(relativeUrl) {
-        return fetchAndCache(baseUrl + relativeUrl, core);
-      }));
-    });
-  }));
-});
+];
 
+var staticCacheName = 'pages-cache-v0';
 
-this.addEventListener("activate", function(e) {
-  // Copy the newly installed cache to the active cache
-  e.waitUntil(cacheCopy("core-waiting", "core"));
-});
-
-this.addEventListener("fetch", function(e) {
-  var request = e.request;
-
-  if (request.url.indexOf(scope) === -1) {
-    return;
-  }
-
-  // Basic read-through caching.
-  e.respondWith(
-    caches.open("core").then(function(core) {
-      return core.match(request).then(function(response) {
-        if (response) {
-          return response;
-        }
-
-        // we didn't have it in the cache, so add it to the cache and return it
-        log("runtime caching:", request.url);
-
-        return fetchAndCache(request, core);
-      });
+self.addEventListener('install', function(event) {
+  console.log('Attempting to install service worker and cache static assets');
+  event.waitUntil(
+    caches.open(staticCacheName)
+    .then(function(cache) {
+      return cache.addAll(filesToCache);
     })
   );
 });
+
+  self.addEventListener('fetch', function(event) {
+  console.log('Fetch event for ', event.request.url);
+  event.respondWith(
+    caches.match(event.request).then(function(response) {
+      if (response) {
+        console.log('Found ', event.request.url, ' in cache');
+        return response;
+      }
+      console.log('Network request for ', event.request.url);
+      return fetch(event.request)
+
+     .then(function(response) {
+
+  // TODO 5 - Respond with custom 404 page
+
+  return caches.open(staticCacheName).then(function(cache) {
+    if (event.request.url.indexOf('test') < 0) {
+      cache.put(event.request.url, response.clone());
+    }
+    return response;
+  });
+});
+
+    }).catch(function(error) {
+
+		console.log('Error, ', error);
+        return caches.match('offline.html');
+    })
+  );
+});
+
+  self.addEventListener('activate', function(event) {
+  console.log('Activating new service worker...');
+var staticCacheName = 'pages-cache-v1';
+  var cacheWhitelist = [staticCacheName];
+
+  event.waitUntil(
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.map(function(cacheName) {
+          if (cacheWhitelist.indexOf(cacheName) === -1) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
+});
+
+
+})();
