@@ -70,6 +70,7 @@ this.addEventListener("install", function(e) {
         "?offline",
         "index.html",
         "worker.js",
+        "NoSleep.min.js"
         "DJ_DON.jpg",
         "about.html",
         "tos.html",
