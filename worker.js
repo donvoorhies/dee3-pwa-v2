@@ -87,6 +87,9 @@ this.addEventListener("install", function(e) {
         "ios-appicon-152-152.png",
         "ios-appicon-180-180.png",
         "ios-appicon-1024-1024.png",
+        "jquery.fancybox.min.css",
+        "jquery.min.js",
+        "jquery.fancybox.min.js"
       ];
 
       return Promise.all(resourceUrls.map(function(relativeUrl) {
