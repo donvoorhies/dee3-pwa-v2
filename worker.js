@@ -128,8 +128,3 @@ this.addEventListener("fetch", function(e) {
     })
   );
 });
-this.addEventListener('fetch', function(event) {
-  event.respondWith(
-    caches.match('offline.html')
-  );
-});
