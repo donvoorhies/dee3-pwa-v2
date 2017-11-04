@@ -1,105 +1,40 @@
-/*
-Copyright 2016 Google Inc.
+'use strict';
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+var cacheVersion = 1;
+var currentCache = {
+  offline: 'offline-cache' + cacheVersion
+};
+const offlineUrl = 'offline.html';
 
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
-
-(function() {
-  'use strict';
-
-  var filesToCache = [
-  '.',
- 		"index.html",
-        "DJ_DON.jpg",
-        "about.html",
-        "tos.html",
-        "offline.html",
-        "offline.svg",
-        "android-launchericon-48-48.webp",
-        "android-launchericon-72-72.webp",
-        "android-launchericon-96-96.webp",
-        "android-launchericon-144-144.webp",
-        "android-launchericon-192-192.webp",
-        "android-launchericon-192-192.png",
-        "android-launchericon-512-512.webp",
-        "ios-appicon-76-76.png",
-        "ios-appicon-120-120.png",
-        "ios-appicon-152-152.png",
-        "ios-appicon-180-180.png",
-        "ios-appicon-1024-1024.png"
-
-];
-
-var staticCacheName = 'pages-cache-v0';
-
-self.addEventListener('install', function(event) {
-  console.log('Attempting to install service worker and cache static assets');
+this.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(staticCacheName)
-    .then(function(cache) {
-      return cache.addAll(filesToCache);
+    caches.open(currentCache.offline).then(function(cache) {
+      return cache.addAll([
+          'offline.svg',
+          offlineUrl
+      ]);
     })
   );
 });
 
-  self.addEventListener('fetch', function(event) {
-  console.log('Fetch event for ', event.request.url);
-  event.respondWith(
-    caches.match(event.request).then(function(response) {
-      if (response) {
-        console.log('Found ', event.request.url, ' in cache');
-        return response;
+this.addEventListener('fetch', event => {
+  // request.mode = navigate isn't supported in all browsers
+  // so include a check for Accept: text/html header.
+  if (event.request.mode === 'navigate' || (event.request.method === 'GET' && event.request.headers.get('accept').includes('text/html'))) {
+        event.respondWith(
+          fetch(event.request.url).catch(error => {
+              // Return the offline page
+              return caches.match(offlineUrl);
+          })
+    );
+  }
+  else{
+        // Respond with everything else if we can
+        event.respondWith(caches.match(event.request)
+                        .then(function (response) {
+                        return response || fetch(event.request);
+                    })
+            );
       }
-      console.log('Network request for ', event.request.url);
-      return fetch(event.request)
-
-     .then(function(response) {
-
-  // TODO 5 - Respond with custom 404 page
-
-  return caches.open(staticCacheName).then(function(cache) {
-    if (event.request.url.indexOf('test') < 0) {
-      cache.put(event.request.url, response.clone());
-    }
-    return response;
-  });
-});
-
-    }).catch(function(error) {
-
-		console.log('Error, ', error);
-        return caches.match('offline.html');
-    })
-  );
-});
-
-  self.addEventListener('activate', function(event) {
-  console.log('Activating new service worker...');
-var staticCacheName = 'pages-cache-v1';
-  var cacheWhitelist = [staticCacheName];
-
-  event.waitUntil(
-    caches.keys().then(function(cacheNames) {
-      return Promise.all(
-        cacheNames.map(function(cacheName) {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
-  );
-});
-
-
-})();
+	
+	
