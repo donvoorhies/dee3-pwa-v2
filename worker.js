@@ -16,6 +16,7 @@ this.addEventListener('install', event => {
     })
   );
 });
+
 this.addEventListener('fetch', event => {
   // request.mode = navigate isn't supported in all browsers
   // so include a check for Accept: text/html header.
