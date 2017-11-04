@@ -54,8 +54,17 @@ li a:hover{background:#FFF;color:#25292C;transition:.5s}
 //http://deanhume.com/Home/BlogPost/create-a-really--really-simple-offline-page-using-service-workers/10135
 //https://github.com/deanhume/Service-Worker-Offline
 // Register the service worker
-//"serviceWorker"in 
-navigator&&navigator.serviceWorker.register("worker.js").then(function(a){/** Registration was successful*/console.log("ServiceWorker registration successful with scope: ",a.scope)})["catch"](function(a){/** Registration failed :-(*/console.log("ServiceWorker registration failed: ",a)});
+if ('serviceWorker' in navigator) {
+	navigator.serviceWorker.register('worker.js').then(function(registration) {
+    // Registration was successful
+    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+}).catch(function(err) {
+    // registration failed :(
+    	console.log('ServiceWorker registration failed: ', err);
+    });
+}
+</script>
+
 
  </script>
 <script>
