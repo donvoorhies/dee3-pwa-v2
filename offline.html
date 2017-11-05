@@ -31,9 +31,11 @@ Please establish one of these connections and try again. Thanks!</div>
 var noSleep = new NoSleep();
 noSleep.disable();
 </script>
-<script src="https://cdn.rawgit.com/lambtron/caffeine/master/lib/caffeine.min.js"></script>
 <script>
-  caffeine.stop();
-</script>
+	var online = navigator.onLine;
+	if (online==true) {
+   window.location = "index.html";
+}
+	</script>
 </body>
 </html>
