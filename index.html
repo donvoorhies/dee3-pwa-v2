@@ -75,13 +75,26 @@ li a:hover{background:#FFF;color:#25292C;transition:.5s}
 <script src="https://cdn.rawgit.com/richtr/NoSleep.js/master/dist/NoSleep.min.js"></script>
 <script>$(document).ready(function(){$("#burger").click(function(){$("nav").slideToggle("slow");});$("a.funk").click(function(){$("nav").slideUp("slow");});});</script>
 <script>$(document).ready(function(){$("[data-fancybox]").fancybox({buttons:['fullScreen','close'],iframe:{css:{width:'800px',height:'120px'}}});});</script>
-<script>
+<!--<script>
 var noSleep = new NoSleep();
 function enableNoSleep() {
   noSleep.enable();
   document.removeEventListener('click', enableNoSleep, false);
 }
-</script>
+</script>-->
+ <script>
+ <script>
+      var noSleep = new NoSleep();
+      var wakeLockEnabled = false;
+        if (!wakeLockEnabled) {
+          noSleep.enable(); // keep the screen on!
+          wakeLockEnabled = true;
+        } else {
+          noSleep.disable(); // let the screen turn off.
+          wakeLockEnabled = false;
+        }
+    </script>
+ </script>
 <script src="https://cdn.rawgit.com/lambtron/caffeine/master/lib/caffeine.min.js"></script>
 <script>
   caffeine.start(); // keep iOS-phone awake
