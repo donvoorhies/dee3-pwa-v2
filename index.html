@@ -70,10 +70,11 @@ https://github.com/deanhume/Service-Worker-Offline
 <script src="upup.min.js"></script>
 <script src="upup.sw.min.js"></script>
 <script>
+    UpUp.addSettings({ content: 'Cannot reach site. Please check your internet connection.' });
     UpUp.start({ 
-      'content-url': 'offline.html'
+      //'content-url': 'offline.html'
     });
   </script>
-<script>var online=navigator.onLine;0==online&&(window.location="offline.html");</script>
+<!--<script>var online=navigator.onLine;0==online&&(window.location="offline.html");</script>-->
 </body>
 </html>
