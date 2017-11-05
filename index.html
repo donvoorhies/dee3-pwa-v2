@@ -84,5 +84,11 @@ https://github.com/deanhume/Service-Worker-Offline
       'content-url': 'offline.html' // show this page to offline users
     });
   </script>
-	</body>
+<script>
+	var online = navigator.onLine;
+	if (online==false) {
+   window.location = "offline.html";
+}
+	</script>
+</body>
 </html>
