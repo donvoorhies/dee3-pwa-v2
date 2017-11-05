@@ -49,15 +49,13 @@ li a:hover{background:#FFF;color:#25292C;transition:.5s}
 <a class="set" data-fancybox="group" data-type="iframe" data-src="//www.mixcloud.com/widget/iframe/?hide_cover=1&feed=%2Fdee3%2Fdube-collabs-featuring-dee3-02-19-17%2F" href="javascript:;"></a>
 <a class="set" data-fancybox="group" data-type="iframe" data-src="//www.mixcloud.com/widget/iframe/?hide_cover=1&feed=%2Fdee3%2F25%2F" href="javascript:;"></a></main>
 <footer><a href="mailto:dee3.mixes@gmail.com">dee3.mixes@gmail.com</a></footer>
-
 <!--
 http://deanhume.com/Home/BlogPost/create-a-really-really-simple-offline-page-using-service-workers/10135
 https://github.com/deanhume/Service-Worker-Offline
 https://www.talater.com/upup/
 -->
-<script>
-!function(e){"use strict";var n=function(n,t,o){function i(e){return a.body?e():void setTimeout(function(){i(e)})}function r(){l.addEventListener&&l.removeEventListener("load",r),l.media=o||"all"}var d,a=e.document,l=a.createElement("link");if(t)d=t;else{var s=(a.body||a.getElementsByTagName("head")[0]).childNodes;d=s[s.length-1]}var f=a.styleSheets;l.rel="stylesheet",l.href=n,l.media="only x",i(function(){d.parentNode.insertBefore(l,t?d:d.nextSibling)});var u=function(e){for(var n=l.href,t=f.length;t--;)if(f[t].href===n)return e();setTimeout(function(){u(e)})};return l.addEventListener&&l.addEventListener("load",r),l.onloadcssdefined=u,u(r),l};"undefined"!=typeof exports?exports.loadCSS=n:e.loadCSS=n}("undefined"!=typeof global?global:this);</script>
-<script>loadCSS( "https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css" );</script>
+<script>!function(e){"use strict";var n=function(n,t,o){function i(e){return a.body?e():void setTimeout(function(){i(e)})}function r(){l.addEventListener&&l.removeEventListener("load",r),l.media=o||"all"}var d,a=e.document,l=a.createElement("link");if(t)d=t;else{var s=(a.body||a.getElementsByTagName("head")[0]).childNodes;d=s[s.length-1]}var f=a.styleSheets;l.rel="stylesheet",l.href=n,l.media="only x",i(function(){d.parentNode.insertBefore(l,t?d:d.nextSibling)});var u=function(e){for(var n=l.href,t=f.length;t--;)if(f[t].href===n)return e();setTimeout(function(){u(e)})};return l.addEventListener&&l.addEventListener("load",r),l.onloadcssdefined=u,u(r),l};"undefined"!=typeof exports?exports.loadCSS=n:e.loadCSS=n}("undefined"!=typeof global?global:this);</script>
+<script>loadCSS("https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css");</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js" integrity="sha256-PyeEn7y37Cfw5xCU4Ub3G+A8Qx9zqMnAIaRGKjnfWiI=" crossorigin="anonymous"></script>
 <script src="https://cdn.rawgit.com/richtr/NoSleep.js/master/dist/NoSleep.min.js"></script>
@@ -65,6 +63,6 @@ https://www.talater.com/upup/
 <script>$(document).ready(function(){$("[data-fancybox]").fancybox({buttons:['fullScreen','close'],iframe:{css:{width:'800px',height:'120px'}}});});</script>
 <script>var noSleep=new NoSleep,wakeLockEnabled=!1;wakeLockEnabled?(noSleep.disable(),wakeLockEnabled=!1):(noSleep.enable(),wakeLockEnabled=!0);</script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/UpUp/0.3.0/upup.min.js"></script>
-<script>UpUp.start({'content-url': 'offline.html','service-worker-url': 'upup.sw.min.js'});</script>
+<script>UpUp.start({'content-url':'offline.html','service-worker-url':'upup.sw.min.js'});</script>
 </body>
 </html>
