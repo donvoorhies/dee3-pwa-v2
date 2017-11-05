@@ -86,9 +86,11 @@ li a:hover{background:#FFF;color:#25292C;transition:.5s}
           wakeLockEnabled = false;
         }
 </script>
-<!--<script src="https://cdn.rawgit.com/lambtron/caffeine/master/lib/caffeine.min.js"></script>
 <script>
-  caffeine.start(); // keep iOS-phone awake
-</script>-->
+	var online = navigator.onLine;
+	if (online==false) {
+   window.location = "offline.html";
+}
+	</script>
 </body>
 </html>
