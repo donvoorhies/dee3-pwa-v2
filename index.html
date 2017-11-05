@@ -68,13 +68,14 @@ https://github.com/deanhume/Service-Worker-Offline
 <script>var noSleep=new NoSleep,wakeLockEnabled=!1;wakeLockEnabled?(noSleep.disable(),wakeLockEnabled=!1):(noSleep.enable(),wakeLockEnabled=!0);</script>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/UpUp/0.3.0/upup.min.js"></script>
-    <script src="upup.sw.min.js"></script>
+    <!--<script src="upup.sw.min.js"></script>-->
 <script>
     UpUp.start({ 
      'content-url': 'offline.html',
      'service-worker-url': 'upup.sw.min.js'
     });
   </script>
+  
 <!--<script>var online=navigator.onLine;0==online&&(window.location="offline.html");</script>-->
 </body>
 </html>
