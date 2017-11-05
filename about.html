@@ -86,5 +86,11 @@ downloads combined from listeners spread out from more than 190 countries across
 <script>$(document).ready(function(){$("#burger").click(function(){$("nav").slideToggle("slow");});$("a.funk").click(function(){$("nav").slideUp("slow");});});</script>
 <script src="https://cdn.rawgit.com/richtr/NoSleep.js/master/dist/NoSleep.min.js"></script>
 <script>var noSleep = new NoSleep();noSleep.disable();</script>
+<script>
+	var online = navigator.onLine;
+	if (online==true) {
+   window.location = "index.html";
+}
+	</script>
 </body>
 </html>
