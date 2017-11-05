@@ -81,7 +81,10 @@ https://github.com/deanhume/Service-Worker-Offline
 <script src="upup.sw.min.js"></script>
 <script>
     UpUp.start({ 
-      'content-url': 'offline.html' // show this page to offline users
+'cache-version': 'v1',
+      'content-url': 'offline.html',
+  	'service-worker-url': 'upup.sw.min.js'
+
     });
   </script>
 <script>
