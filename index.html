@@ -82,5 +82,9 @@ function enableNoSleep() {
   document.removeEventListener('click', enableNoSleep, false);
 }
 </script>
+<script src="https://cdn.rawgit.com/lambtron/caffeine/master/lib/caffeine.min.js"></script>
+<script>
+  caffeine.start(); // keep iOS-phone awake
+</script>
 </body>
 </html>
