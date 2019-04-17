@@ -4,7 +4,7 @@ Thanks goes to Dean Hume (https://github.com/deanhume/Service-Worker-Offline) an
 
 Try it out for real here at:
 
-https://donvoorhies.github.io/dee3-pwa-2/
+https://donvoorhies.github.io/dee3-pwa-v2/
 
 <img src="chart2.png" style="width:240px;height:auto;" alt="QR-code">
 
