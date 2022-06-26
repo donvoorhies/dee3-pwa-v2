@@ -11,10 +11,15 @@ https://donvoorhies.github.io/dee3-pwa-v2/
 Suggested reading:
 
 https://developers.google.com/web/fundamentals/getting-started/codelabs/your-first-pwapp/
+
 https://developers.google.com/web/fundamentals/getting-started/codelabs/offline/
+
 https://www.pluralsight.com/blog/software-development/introduction-to-service-worker
+
 http://deanhume.com/home/blogpost/create-a-really--really-simple-offline-page-using-service-workers/10135
+
 https://www.talater.com/upup/
+
 https://github.com/TalAter/UpUp/blob/master/docs/README.md
 
 Web-app basics ("Nice-to-know"):
